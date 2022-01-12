@@ -1,0 +1,26 @@
+html
+    if (session.loggedin)
+        header 
+            a(href="/")= `Home Page`
+            br
+            a(href="/users")= `User directory`
+            br
+            a(href=`/users/${session._id}`)= `User Profile`
+            br
+            a(href="/orders")= `Order Form`
+            br
+            a(href="/logout")= "Logout"
+    else
+        header 
+            a(href="/")= `Home Page`
+            br
+            a(href="/users")= `User directory`
+            br
+            a(href="/login")= "Login"
+            br
+    body
+        a()=`User who made this order: ${user.username}`
+        p=`Restaurant ${order.restaurantName}, subTotal:${order.subtotal}, total: ${order.total}, fee: ${order.fee}, tax: ${order.tax}`
+        ul
+            for value,key in order.order
+                li= `ID: ${key}, Name: ${order.order[key].name}, Quantity: ${order.order[key].quantity}`

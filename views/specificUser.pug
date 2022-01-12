@@ -1,0 +1,37 @@
+html
+    if (session.loggedin)
+        header 
+            a(href="/")= `Home Page`
+            br
+            a(href="/users")= `User directory`
+            br
+            a(href=`/users/${session._id}`)= `User Profile`
+            br
+            a(href="/orders")= `Order Form`
+            br
+            a(href="/logout")= "Logout"
+    else
+        header 
+            a(href="/")= `Home Page`
+            br
+            a(href="/users")= `User directory`
+            br
+            a(href="/login")= "Login"
+            br    
+    head
+        h1 User Profile
+
+    body
+        a()=`User profile for user ${user.username}, id: ${user._id}`
+        ul
+                for order in user.orders
+                    li=`${order.restaurantName}, subTotal:${order.subtotal}, total: ${order.total}, fee: ${order.fee}, tax: ${order.tax}`
+                    a(href=`/orders/${order.uniqueID}`)=`Link to this order ${order.uniqueID}`
+                    ul
+                            for value,key in order.order
+                                li= `ID: ${key}, Name: ${order.order[key].name}, Quantity: ${order.order[key].quantity}`
+        if(session.username == user.username)
+            p You can change your privacy type here
+            form(action=`/users/${user._id}` method="post")
+                button(type="submit")= `Change your privacy from ${user.privacy} to ${!user.privacy}`
+

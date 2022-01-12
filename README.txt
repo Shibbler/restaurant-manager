@@ -1,4 +1,5 @@
-# restaurant-manager
+Lucas Colwell #101102212
+
 to run:
 
 ensure proper directory

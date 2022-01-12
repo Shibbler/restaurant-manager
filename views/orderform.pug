@@ -1,0 +1,45 @@
+html
+    if (session.loggedin)
+        header 
+            a(href="/")= `Home Page`
+            br
+            a(href="/users")= `User directory`
+            br
+            a(href=`/users/${session._id}`)= `User Profile`
+            br
+            a(href="/orders")= `Order Form`
+            br
+            a(href="/logout")= "Logout"
+    else
+        header 
+            a(href="/")= `Home Page`
+            br
+            a(href="/users")= `User directory`
+            br
+            a(href="/login")= "Login"
+            br
+    head
+        title Order Form
+        style(type="text/css").
+            .column {
+                float: left;
+                }
+            .left{
+                width: 10%;
+                }
+            .right {
+                width: 25%;
+                }
+            .middle {
+                width: 65%;
+                }
+    body(onload="init()")
+        select#restaurant-select
+        br
+        br
+        div#info
+        div#main
+            div#left(class="column left")
+            div(class="column middle")#middle
+            div(class="column right")#right
+        script(src="orderform.js")  

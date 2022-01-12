@@ -1,0 +1,33 @@
+html
+    script(src="userList.js") 
+    head
+        title User Directory
+if (session.loggedin)
+    header 
+        a(href="/")= `Home Page`
+        br
+        a(href="/users")= `User directory`
+        br
+        a(href="/profile")= `User Profile`
+        br
+        a(href="/orders")= `Order Form`
+        br
+        a(href="/logout")= "Logout"
+else
+    header 
+        a(href="/home")= `Home Page`
+        br
+        a(href="/users")= `User directory`
+        br
+        a(href="/login")= "Login"
+        br
+body
+    p User List:
+        p Search:
+            input#searchCondition(type="textbox")
+            button#searchButton(type="button" onclick="search()") Search for Users
+    ul
+        for user in users
+            a(href=`/users/${user.username}`)= `${user.username}`
+            br
+            br

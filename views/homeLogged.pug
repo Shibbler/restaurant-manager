@@ -1,0 +1,25 @@
+if (session.loggedin)
+    header 
+        a(href="/")= `Home Page`
+        br
+        a(href="/users")= `User directory`
+        br
+        a(href=`/users/${session._id}`)= `User Profile`
+        br
+        a(href="/orders")= `Order Form`
+        br
+        a(href="/logout")= "Logout"
+    body
+        h1 Welcome to home page!
+        a()=`You are logged in as username ${session.username}`
+else
+    header 
+        a(href="/")= `Home Page`
+        br
+        a(href="/users")= `User directory`
+        br
+        a(href="/login")= "Login"
+        br
+    body
+        h1 Welcome to home page!
+        p You are not logged in.
